@@ -1,11 +1,15 @@
 import { AppBar, Toolbar, Typography, Button } from '@mui/material'
 import React from 'react'
 
-const NavbarHome = () => {
+interface NavbarHomeProps {
+    isTop: boolean;
+  }
+
+  const NavbarHome: React.FC<NavbarHomeProps> = ({ isTop }) => {
   return (
-    <AppBar position="static" sx={{height : "4em" , bgcolor : 'secondary.main'}}>
+    <AppBar position="sticky" sx={{height : "4em" , bgcolor : 'secondary.main'}}>
     <Toolbar >
-    {/* <Typography 
+    {isTop ? null : <Typography 
       variant="h6" 
       component="div" 
       sx={{ 
@@ -14,7 +18,7 @@ const NavbarHome = () => {
         fontWeight: 'bold',
       }}>
       FishMP
-      </Typography> */}
+      </Typography>}
 
       <Button variant="contained" sx={{ ml: 'auto' , bgcolor : 'primary.main'}}>Sign up</Button>
     </Toolbar>
