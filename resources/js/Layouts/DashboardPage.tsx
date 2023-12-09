@@ -1,3 +1,6 @@
+//everything is stacked in one file cuz i'm lazy and i don't want to make a new file for every component
+//also imports are working here, so don't complain >:(
+
 import * as React from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -21,6 +24,9 @@ import { Avatar, Backdrop, Button, CircularProgress, Dialog, DialogActions, Dial
 import { AccountCircle } from '@mui/icons-material';
 import { useState } from 'react';
 import Tile from '../Components/Tile';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import MapIcon from '@mui/icons-material/Map';
 
 function Copyright(props: any) {
   return (
@@ -39,6 +45,11 @@ const drawerWidth: number = 240;
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
+  
+}
+
+interface props {
+  user? : any
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -101,7 +112,7 @@ const defaultTheme = createTheme({
   },
 });
 
-export default function DashboardPage() {
+export default function DashboardPage({user} : props) {
   const [logoutModal, setLogoutModal] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [backdropOpen, setBackdropOpen] = React.useState(false);
@@ -201,9 +212,32 @@ const handleDrawerClose = () => {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            <ListItemButton onClick={handleLogoutOpen}>
+          <Link color="inherit" href="/dashboard" sx={{textDecoration : 'none'}}>
+          <ListItemButton>  
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Home" />
+    </ListItemButton>
+    </Link>
+    <Link color="inherit" href="/urlocations" sx={{textDecoration : 'none'}}>
+    <ListItemButton>
+      <ListItemIcon>
+        <LocationOnIcon />
+      </ListItemIcon>
+      <ListItemText primary="Your Locations" />
+    </ListItemButton>
+    </Link>
+    <Link color="inherit" href="/osm" sx={{textDecoration : 'none'}}>
+    <ListItemButton >
+      <ListItemIcon>
+        <MapIcon />
+      </ListItemIcon>
+      <ListItemText primary="Map" />
+    </ListItemButton> 
+    </Link>
+            <Divider sx={{ my: 1 }}  />
+            <ListItemButton onClick={handleLogoutOpen}> {/* logout button */}
       <ListItemIcon>
         <LogOutIcon />
       </ListItemIcon>
@@ -244,7 +278,7 @@ const handleDrawerClose = () => {
             <Grid container spacing={3}>
             <Grid item xs={12}>
     <Typography variant="h3" component="h2" gutterBottom sx={{mb : 2}}>
-      Welcome, User!
+      Welcome, {user ? user.name : null}
     </Typography>
     <Typography variant="h5" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}}>
       Here are some locations for you:
@@ -309,7 +343,8 @@ const handleDrawerClose = () => {
   </DialogContent>
   <DialogActions >
     <Button onClick={handleLogoutClose}>Back</Button>
-     
+    {/* 
+// @ts-ignore */}
       <LinkInertia href={route('logout')} method="POST" >
       <Typography color="red" sx={{fontSize : 15}}>LOG OUT</Typography>
       </LinkInertia>

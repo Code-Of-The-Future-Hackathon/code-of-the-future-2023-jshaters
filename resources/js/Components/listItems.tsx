@@ -28,12 +28,7 @@ export const mainListItems = (
       <ListItemText primary="Map" />
     </ListItemButton>
     
-    <ListItemButton>
-      <ListItemIcon>
-        <SettingsIcon />
-      </ListItemIcon>
-      <ListItemText primary="App settings" />
-    </ListItemButton>
+    
   </React.Fragment>
 );
 
