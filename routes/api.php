@@ -22,14 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/v1/getGreenSpaces', function (Request $request) {
     return GreenSpace::all();
 });
-Route::post('/v1/likeGreenSpace', function (Request $request) {
-    $user = $request->user();
-    if (!$user) {
-        return response()->json(['message' => 'Not authenticated!']);
-    }
-    $greenSpace = GreenSpace::findOrFail($request->greenSpaceId);
-    $user->greenSpaces()->attach($greenSpace);
-    return response()->json(['message' => 'Green space liked successfully']);
-});
-Route::get('/v1/userLikedGreenSpaces', [OSMDataController::class, 'getLikedGreenSpaces']);
+
 Route::post('/v1/sortGreenSpaces', [OSMDataController::class, 'sort'])->name('likePlace');

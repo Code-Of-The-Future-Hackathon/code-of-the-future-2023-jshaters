@@ -83,42 +83,8 @@ class OSMDataController extends Controller
     }
 
 
-    public function getLikedGreenSpaces(Request $request)
-    {
-        $user = auth()->user();
-        if (!$user) {
-            return response()->json(['message' => 'User not authenticated'], 401);
-        }
-        $likedGreenSpaces = $user->greenSpaces;
-        return response()->json(['likedGreenSpaces' => $likedGreenSpaces]);
-    }
-    private function like($user, $greenSpace)
-    {
-        if (!$user) {
-            return redirect('/login');
-        }
-        $user->greenSpaces()->attach($greenSpace->id);
-        $greenSpace->likes++;
-        $greenSpace->save();
-    }
 
-    private function unlike($user, $greenSpace)
-    {
-        if (!$user) {
-            return redirect('/login');
-        }
-        $user->greenSpaces()->detach($greenSpace->id);
-        $greenSpace->likes--;
-        $greenSpace->save();
-    }
-    public function isLikedByUser($greenSpaceId)
-    {
-        $user = auth()->user();
-        if (!$user) {
-            return response()->json(['message' => 'User not authenticated'], 401);
-        }
-        $isLiked = $user->greenSpaces()->where('green_space_id', $greenSpaceId)->exists();
-        return response()->json(['isLiked' => $isLiked]);
-    }
+
+
 
 }

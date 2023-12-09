@@ -106,6 +106,14 @@ const HomePage = () => {
         });
       }
     }, [lat, lon]);
+    const [likedGreenSpacesIds, setLikedGreenSpacesIds] = useState<number[]>([]);
+
+    useEffect(()=>{
+      axios.get('/userLikedGreenSpaces').then((res)=>{
+        const ids = res.data.likedGreenSpaces.map((space: { id: number }) => space.id);
+        setLikedGreenSpacesIds(ids);
+      })
+    })
   
   return (
     
@@ -124,6 +132,8 @@ const HomePage = () => {
         <HomePageTile
           key={index}
           props={space}
+          myLoc={[lat, lon]}
+          likedPosts={likedGreenSpacesIds}
         />
       ))}
       </Grid>

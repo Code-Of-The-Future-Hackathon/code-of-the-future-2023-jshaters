@@ -18,8 +18,5 @@ class GreenSpace extends Model
         'lat',
         'lon',
     ];
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
+   
 }
