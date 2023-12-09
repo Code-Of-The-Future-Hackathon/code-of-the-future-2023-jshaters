@@ -3,7 +3,6 @@ import { MapContainer, Popup, Marker, TileLayer, useMap } from 'react-leaflet';
 import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { usePage } from '@inertiajs/react';
-import MarkerClusterGroup from 'react-leaflet-cluster';
 interface SetViewOnClickProps {
     coords: LatLngTuple;
 }

@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/inertia-react'
+import { Link } from '@inertiajs/react'
 import { AppBar, Toolbar, Typography, Button } from '@mui/material'
 import React from 'react'
 
@@ -24,9 +24,9 @@ interface NavbarHomeProps {
     
      
   <Button variant="contained" sx={{ ml: 'auto', bgcolor: 'primary.main' }}>
-  <Link href={route('register')}>
-    Log in
-  </Link>
+    <Link href='/login'>
+      Log in
+    </Link>
   </Button>
 
         
