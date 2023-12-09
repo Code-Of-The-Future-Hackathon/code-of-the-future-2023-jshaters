@@ -18,12 +18,12 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems} from '../Components/listItems';
+import { mainListItems} from '../../Components/listItems';
 import LogOutIcon from '@mui/icons-material/Logout';
 import { Avatar, Backdrop, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, Modal } from '@mui/material/';
 import { AccountCircle } from '@mui/icons-material';
 import { useState } from 'react';
-import Tile from '../Components/Tile';
+import Tile from '../../Components/Tile';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MapIcon from '@mui/icons-material/Map';
@@ -285,7 +285,24 @@ const handleDrawerClose = () => {
     </Typography>
   </Grid>
              
-    
+    <Grid container spacing={2} justifyContent="center">
+  <Grid item xs={7} md={7} lg={6} /* post example */>
+    <Tile title="Location 1, Location" description="This is a description of the location" image=" "/>
+    <Tile title="Location 2, Location" description="This is a description of the location" image=" "/>
+    <Tile title="Location 3, Location" description="This is a description of the location" image=" "/>
+
+  <Box display="flex" justifyContent="center">
+      <Button variant="contained">
+         Load More Locations
+      </Button>
+  </Box>
+
+
+
+
+ 
+</Grid>
+</Grid>
               
         
       </Grid>

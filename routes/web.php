@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\UrLocationsController;
+use App\Http\Controllers\YourLocationsController;
 use App\Http\Controllers\GreenSpaceController;
 use App\Http\Controllers\OSMDataController;
 use App\Http\Controllers\ProfileController;
@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/osm', [OSMDataController::class, 'index']);
 
-Route::get('/urlocations', [UrLocationsController::class, 'showDashboard']);
+Route::get('/yourlocations', [YourLocationsController::class, 'index']);
 
 Route::post('/likeGreenSpace', [OSMDataController::class, 'like']);
 Route::resource('/GreenSpaces', GreenSpaceController::class);
