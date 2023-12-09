@@ -220,7 +220,7 @@ const handleDrawerClose = () => {
       <ListItemText primary="Home" />
     </ListItemButton>
     </Link>
-    <Link color="inherit" href="/urlocations" sx={{textDecoration : 'none'}}>
+    <Link color="inherit" href="/yourlocations" sx={{textDecoration : 'none'}}>
     <ListItemButton>
       <ListItemIcon>
         <LocationOnIcon />
@@ -285,24 +285,7 @@ const handleDrawerClose = () => {
     </Typography>
   </Grid>
              
-    <Grid container spacing={2} justifyContent="center">
-  <Grid item xs={7} md={7} lg={6} /* post example */>
-    <Tile title="Location 1, Location" description="This is a description of the location" image=" "/>
-    <Tile title="Location 2, Location" description="This is a description of the location" image=" "/>
-    <Tile title="Location 3, Location" description="This is a description of the location" image=" "/>
-
-  <Box display="flex" justifyContent="center">
-      <Button variant="contained">
-         Load More Locations
-      </Button>
-  </Box>
-
-
-
-
- 
-</Grid>
-</Grid>
+    
               
         
       </Grid>
