@@ -29,8 +29,8 @@ class OSMDataController extends Controller
                 $item['$isLiked'] = $user->greenSpaces()->where('green_space_id', $item)->exists();
             }
         }
-    
-        return Inertia::render('GreenSpacesMap', [
+    //return Inertia::render('GreenSpacesMap', [
+        return Inertia::render('MapPage', [
             'greenSpaces' => $data,
         ]);
     }

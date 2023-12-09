@@ -44,7 +44,7 @@ Route::get('/osm', [OSMDataController::class, 'index']);
 
 Route::get('/yourlocations', [YourLocationsController::class, 'index']);
 
-Route::get('/maps', [MapsController::class, 'index']);
+Route::get('/maps', [MapsController::class, 'showMap']);
 
 
 Route::resource('/GreenSpaces', GreenSpaceController::class);

@@ -43,7 +43,7 @@ const GreenSpacesMap: React.FC = () => {
     
     const nodeData = addressPoints.filter((item: { type: string; })  => item.type === 'node');
     const filteredData = addressPoints.filter((item: { type: string; })  => item.type === 'way' || item.type === 'relation');
-
+ 
 
     return (
         <div style={{ height: "600px" }}>
