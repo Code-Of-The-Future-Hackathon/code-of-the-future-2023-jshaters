@@ -18,7 +18,7 @@ interface NavbarHomeProps {
 
     
      
-  <Button variant="contained" sx={{ ml: 'auto', bgcolor: 'primary.main' }}>
+  <Button variant="contained" sx={{ ml: 'auto', bgcolor: isTop? 'success.main' : 'primary.main' }}>
     <Link href={route('login')}>
       Log in
     </Link>
