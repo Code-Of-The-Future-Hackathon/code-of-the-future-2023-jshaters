@@ -45,5 +45,6 @@ Route::get('/yourlocations', [YourLocationsController::class, 'index']);
 
 Route::post('/likeGreenSpace', [OSMDataController::class, 'like']);
 Route::resource('/GreenSpaces', GreenSpaceController::class);
+Route::get('/userLikedGreenSpaces', [OSMDataController::class, 'getLikedGreenSpaces']);
 
 require __DIR__ . '/auth.php';

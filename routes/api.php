@@ -31,4 +31,5 @@ Route::post('/v1/likeGreenSpace', function (Request $request) {
     $user->greenSpaces()->attach($greenSpace);
     return response()->json(['message' => 'Green space liked successfully']);
 });
+Route::get('/v1/userLikedGreenSpaces', [OSMDataController::class, 'getLikedGreenSpaces']);
 Route::post('/v1/sortGreenSpaces', [OSMDataController::class, 'sort'])->name('likePlace');
