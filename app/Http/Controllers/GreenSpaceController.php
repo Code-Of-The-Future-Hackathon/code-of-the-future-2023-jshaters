@@ -12,31 +12,31 @@ class GreenSpaceController extends Controller
      */
     public function index()
     {
-        //
+        return GreenSpace::all();
     }
 
     /**
      * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
+     *//* 
+public function create()
+{
+//TODO: ADD IF TIME REMAINING
+}
+*/
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    /*   public function store(Request $request)
+      {
+          
+      } */
 
     /**
      * Display the specified resource.
      */
-    public function show(GreenSpace $greenSpace)
+    public function show(string $id)
     {
-        //
+        return GreenSpace::findOrFail([$id]);
     }
 
     /**
@@ -50,9 +50,10 @@ class GreenSpaceController extends Controller
     /**
      * Update the specified resource in storage.
      */
+
     public function update(Request $request, GreenSpace $greenSpace)
     {
-        //
+
     }
 
     /**
