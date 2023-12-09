@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles , Box, Typography, createTheme, useMediaQuery, Button, ThemeProvider, responsiveFontSizes } from '@mui/material';
+import { makeStyles , Box, Typography, createTheme, useMediaQuery, Button, ThemeProvider, responsiveFontSizes, Paper } from '@mui/material';
 import NavbarHome from '@/Components/NavbarHome';
 import Hero from '@/Components/Hero';
 import SubHero from '@/Components/SubHero';
@@ -73,13 +73,17 @@ const HomePage = () => {
       
   
   return (
-
     
+
     <ThemeProvider theme={theme}>
         <NavbarHome isTop={isTop}/>
         <Hero theme={theme}/>
         <SubHero theme={theme}/>
-       
+       <Paper sx={{height : '50vh'}}>
+        <Box sx={{display : 'flex'}}>
+
+        </Box>
+       </Paper>
         <Footer/>
     </ThemeProvider>
   )
