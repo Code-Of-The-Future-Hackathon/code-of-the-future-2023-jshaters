@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
+import {Link as LinkInertia} from '@inertiajs/react'
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -14,12 +15,12 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems} from './listItems';
+import { mainListItems} from '../Components/listItems';
 import LogOutIcon from '@mui/icons-material/Logout';
 import { Avatar, Backdrop, Button, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, Modal } from '@mui/material/';
 import { AccountCircle } from '@mui/icons-material';
 import { useState } from 'react';
-import Tile from './Tile';
+import Tile from '../Components/Tile';
 
 function Copyright(props: any) {
   return (
@@ -100,7 +101,7 @@ const defaultTheme = createTheme({
   },
 });
 
-export default function Dashboard() {
+export default function DashboardPage() {
   const [logoutModal, setLogoutModal] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [backdropOpen, setBackdropOpen] = React.useState(false);
@@ -308,9 +309,10 @@ const handleDrawerClose = () => {
   </DialogContent>
   <DialogActions >
     <Button onClick={handleLogoutClose}>Back</Button>
-    <Button onClick={handleLogoutClose} color="error" autoFocus>
-      Log Out
-    </Button>
+     
+      <LinkInertia href={route('logout')} method="POST" >
+      <Typography color="red" sx={{fontSize : 15}}>LOG OUT</Typography>
+      </LinkInertia>
   </DialogActions>
 </Dialog>
 
