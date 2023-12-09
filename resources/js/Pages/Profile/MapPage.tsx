@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import {Link as LinkInertia} from '@inertiajs/react'
+import {Link as LinkInertia, usePage} from '@inertiajs/react'
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -114,6 +114,9 @@ const defaultTheme = createTheme({
 });
 
 export default function MapPage({user} : props) {
+
+  const { props } = usePage();
+  
   const [logoutModal, setLogoutModal] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [backdropOpen, setBackdropOpen] = React.useState(false);
@@ -286,7 +289,7 @@ const handleDrawerClose = () => {
     </Typography>
   </Grid>
              
-  <GreenSpacesMap />
+  <GreenSpacesMap props={props} />
               
         
       </Grid>

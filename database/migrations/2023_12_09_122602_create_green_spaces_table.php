@@ -13,7 +13,6 @@ return new class extends Migration {
         Schema::create('green_spaces', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->integer('likes')->default(0);
             $table->string('leisure')->nullable();
             $table->double('lat')->nullable();
             $table->double('lon')->nullable();
