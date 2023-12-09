@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles , Box, Typography, createTheme, useMediaQuery, Button, ThemeProvider, responsiveFontSizes, Paper } from '@mui/material';
+import { makeStyles , Box, Typography, createTheme, useMediaQuery, Button, ThemeProvider, responsiveFontSizes, Paper, Grid } from '@mui/material';
 import NavbarHome from '@/Components/NavbarHome';
 import Hero from '@/Components/Hero';
 import SubHero from '@/Components/SubHero';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Footer from '@/Components/Footer';
+import HomePageTile from '@/Components/HomePageTile';
 
 
 
@@ -79,11 +80,28 @@ const HomePage = () => {
         <NavbarHome isTop={isTop}/>
         <Hero theme={theme}/>
         <SubHero theme={theme}/>
-       <Paper sx={{height : '50vh'}}>
-        <Box sx={{display : 'flex'}}>
+        <Box sx={{bgcolor : '#181818', color : "#d0d0d0"}}>
+        <Typography align={matches ? "left" : "center"} variant="h2" sx={{py : 5, pl : matches? 20 : 0}}>Nice spots, close to you!</Typography>
+        <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: </Typography>
+        <Paper sx={{ height: 'auto', padding: '1em' , display: 'flex', justifyContent : 'space-evenly', bgcolor : '#181818', color : '#d0d0d0'}}>
+          
+        <Grid container justifyContent="center" spacing={0}>
+        
+          <HomePageTile/>
+       
+        
+          <HomePageTile/>
+        
+      
+          <HomePageTile/>
+        
+       
+          <HomePageTile/>
+        
+      </Grid>
 
-        </Box>
-       </Paper>
+    </Paper>
+    </Box>
         <Footer/>
     </ThemeProvider>
   )
