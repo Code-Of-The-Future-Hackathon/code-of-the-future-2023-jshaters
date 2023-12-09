@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GreenSpaceController;
 use App\Http\Controllers\OSMDataController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -19,7 +20,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     // return Inertia::render('Welcome', [
-        return Inertia::render('HomePage', [
+    return Inertia::render('HomePage', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -38,5 +39,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/osm', [OSMDataController::class, 'index']);
+
+Route::resource('/GreenSpaces', GreenSpaceController::class);
 
 require __DIR__ . '/auth.php';
