@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\MapsController;
 use App\Http\Controllers\YourLocationsController;
 use App\Http\Controllers\GreenSpaceController;
 use App\Http\Controllers\OSMDataController;
@@ -43,8 +44,9 @@ Route::get('/osm', [OSMDataController::class, 'index']);
 
 Route::get('/yourlocations', [YourLocationsController::class, 'index']);
 
-Route::post('/like', [OSMDataController::class, 'like']);
-Route::post('/unlike', [OSMDataController::class, 'unlike']);
+Route::get('/maps', [MapsController::class, 'index']);
+
+
 Route::resource('/GreenSpaces', GreenSpaceController::class);
 Route::get('/userLikedGreenSpaces', [OSMDataController::class, 'getLikedGreenSpaces']);
 
