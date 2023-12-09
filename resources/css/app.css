@@ -25,3 +25,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.navbarHero {
+    background-image: url('/images/logo.png');
+}
