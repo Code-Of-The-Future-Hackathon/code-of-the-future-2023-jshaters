@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\MapsController;
 use App\Http\Controllers\YourLocationsController;
 use App\Http\Controllers\GreenSpaceController;
 use App\Http\Controllers\OSMDataController;
@@ -42,6 +43,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/osm', [OSMDataController::class, 'index']);
 
 Route::get('/yourlocations', [YourLocationsController::class, 'index']);
+
+Route::get('/maps', [MapsController::class, 'index']);
+
 
 Route::post('/likeGreenSpace', [OSMDataController::class, 'like']);
 Route::resource('/GreenSpaces', GreenSpaceController::class);
