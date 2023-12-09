@@ -68,6 +68,7 @@ const GreenSpacesMap: React.FC = () => {
 
 
         </div>
+        
     );
 };
 
