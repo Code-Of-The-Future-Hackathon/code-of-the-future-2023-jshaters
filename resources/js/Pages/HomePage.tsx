@@ -80,7 +80,7 @@ const HomePage = () => {
     <ThemeProvider theme={theme}>
         <NavbarHome isTop={isTop}/>
         <Hero theme={theme}/>
-        <SubHero theme={theme}/>
+        <SubHero  theme={theme}/>
         <Box sx={{bgcolor : '#181818', color : "#d0d0d0", pb:10}}>
         <Typography align={matches ? "left" : "center"} variant="h2" sx={{py : 5, pl : matches? 20 : 0}}>Nice spots, close to you!</Typography>
         <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: </Typography>
