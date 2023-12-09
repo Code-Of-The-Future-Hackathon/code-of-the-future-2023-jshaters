@@ -289,7 +289,7 @@ const handleDrawerClose = () => {
     </Typography>
   </Grid>
              
-  <GreenSpacesMap props={props} />
+ 
               
         
       </Grid>
