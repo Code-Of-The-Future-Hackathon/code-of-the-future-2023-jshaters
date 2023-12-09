@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet';
+import { MapContainer, Popup, Marker, TileLayer, useMap } from 'react-leaflet';
 import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { usePage } from '@inertiajs/react';
-import MarkerClusterGroup from 'react-leaflet-cluster';
 interface SetViewOnClickProps {
     coords: LatLngTuple;
 }
@@ -16,6 +15,8 @@ const GreenSpacesMap: React.FC = () => {
     console.log(typeof addressPoints);
     console.log(addressPoints);
 
+
+
     const customIcon = L.icon({
         iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
         shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
@@ -26,7 +27,12 @@ const GreenSpacesMap: React.FC = () => {
         popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
     });
 
+
+
     const coords: LatLngTuple = [42.7339, 25.4858];
+    const fixedPoint: LatLngTuple = [27.648598, 41.2447142]
+
+
 
     return (
         <div style={{ height: "600px" }}>
@@ -34,14 +40,21 @@ const GreenSpacesMap: React.FC = () => {
     <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    />
+        
+    ></TileLayer>
+    <Marker position={fixedPoint}>
+      <Popup>
+        A pretty CSS3 popup. <br /> Easily customizable.
+      </Popup>
+    </Marker>
+{/* 
     {addressPoints.map((addressPoint: any, index: number) => {
     return addressPoint.geometry.map((geom: { lat: number, lon: number }, idx: number) => {
         const latlng: LatLngTuple = [geom.lat, geom.lon];
-        console.log(index)
+        
         return <Marker key={`${index}-${idx}`} position={latlng} icon={customIcon} />;
     });
-})}
+})} */}
 </MapContainer>
         </div>
     );

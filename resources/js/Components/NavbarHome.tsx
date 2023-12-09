@@ -19,9 +19,9 @@ interface NavbarHomeProps {
     
      
   <Button variant="contained" sx={{ ml: 'auto', bgcolor: 'primary.main' }}>
-  <Link href={route('register')}>
-    Log in
-  </Link>
+    <Link href='/login'>
+      Log in
+    </Link>
   </Button>
 
         
