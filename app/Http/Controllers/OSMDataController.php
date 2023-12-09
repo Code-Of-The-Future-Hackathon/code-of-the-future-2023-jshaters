@@ -28,11 +28,11 @@ class OSMDataController extends Controller
             if ($user) {
                 $item['$isLiked'] = $user->greenSpaces()->where('green_space_id', $item)->exists();
             }
-
-            return Inertia::render('GreenSpacesMap', [
-                'greenSpaces' => $data,
-            ]);
         }
+    
+        return Inertia::render('GreenSpacesMap', [
+            'greenSpaces' => $data,
+        ]);
     }
     public function sort(Request $request)
     {
