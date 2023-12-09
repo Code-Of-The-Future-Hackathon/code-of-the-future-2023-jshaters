@@ -9,24 +9,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LocationOnIcon />
-      </ListItemIcon>
-      <ListItemText primary="Saved Locations" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <MapIcon />
-      </ListItemIcon>
-      <ListItemText primary="Map" />
-    </ListItemButton>
+   
     
     
   </React.Fragment>
