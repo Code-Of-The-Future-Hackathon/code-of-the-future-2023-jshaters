@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UrLocationsController;
 use App\Http\Controllers\GreenSpaceController;
 use App\Http\Controllers\OSMDataController;
 use App\Http\Controllers\ProfileController;
@@ -39,6 +39,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/osm', [OSMDataController::class, 'index']);
+
+Route::get('/urlocations', [UrLocationsController::class, 'showDashboard']);
+
 
 Route::resource('/GreenSpaces', GreenSpaceController::class);
 
