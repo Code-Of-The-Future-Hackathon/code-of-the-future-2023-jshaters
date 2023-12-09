@@ -18,14 +18,14 @@ interface NavbarHomeProps {
         fontFamily: 'Arial, sans-serif', // Replace with your desired font
         fontWeight: 'bold',
       }}>
-      FishMP
+      GreenMore
       </Typography>}
 
     
      
   <Button variant="contained" sx={{ ml: 'auto', bgcolor: 'primary.main' }}>
   <Link href={route('register')}>
-    Sign up
+    Log in
   </Link>
   </Button>
 
