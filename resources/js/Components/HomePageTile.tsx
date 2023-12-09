@@ -1,40 +1,35 @@
-import { Link } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 import { Box, Typography, Button, Grid } from '@mui/material'
 import axios from 'axios'
 import React from 'react'
 
-const HomePageTile = () => {
+interface HomePageTileProps {
+  props: any; // replace 'any' with the actual type of your props
+}
+
+const HomePageTile = ({props}: HomePageTileProps) => {
   const handleLike = () => {
-    axios.post('/api/v1/likeGreenSpace', {
-          'greenSpaceId': 1,
+    router.post('/likeGreenSpace', {
+          'greenSpaceId': props.id,
         })
        
 };
   return (
-    
-     <Box /* tile */ sx={{alignItems: 'center', justifyContent: 'center' , border : '1px solid white', m : 3}}>
-    <Box sx={{display : 'flex' , justifyContent : 'center'}}>
-    <img src="https://via.placeholder.com/300" alt="Placeholder"/>
-    </Box>
-     <Typography variant="h2" component="h2" gutterBottom sx={{textAlign : 'center', px : 5}}>
-       Place, Location
-     </Typography>
-     <Box sx={{ display: 'flex', gap: '1em' , justifyContent : 'center'}}>
-       <Button onClick={handleLike} variant="contained" color="primary" sx={{px : 3, fontSize : 20, m : 2,}}>
-         Like
-         </Button>
+    <div className='rounded-md'>
+    <img className='max-w-[450px] max-h-[225px]' src={"https://maps.googleapis.com/maps/api/streetview?size=600x300&location=" + props.lat + ',' + props.lon + "&fov=80&heading=70&pitch=0&key=AIzaSyAKd0XMNMihuvX21CYeOVeLQbfoUSp3JKI"}  alt="Placeholder"/>
+       <p>{props.leisure}</p>
+       <p>{props.distance < 2 ? `${Math.round(props.distance * 1000)}m` : `${props.distance.toFixed(1)}km`} away</p>
+
+       <div className='mt-5 space-x-4'>
+        <button onClick={handleLike} className='p-2 bg-pink-700 rounded-md'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8Z"/></svg></button>
+     {/*  <button><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 8C8.925 8 4 12.925 4 19c0 11 13 21 20 23.326C31 40 44 30 44 19c0-6.075-4.925-11-11-11c-3.72 0-7.01 1.847-9 4.674A10.987 10.987 0 0 0 15 8Z"/></svg></button> */}
+     <button className='p-2 bg-green-700 rounded-md'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19 10c0 3.976-7 11-7 11s-7-7.024-7-11s3.134-7 7-7s7 3.024 7 7z"/><circle cx="12" cy="10" r="3"/></g></svg></button>
+      
+       </div>
        
-       <Button variant="contained" color="secondary"  sx={{px : 3, fontSize : 20, m : 2 ,}}>
-         Review
-       </Button>
-    </Box>
    
-
+</div>
     
-
-    
-     
-   </Box>
 
   )
 }

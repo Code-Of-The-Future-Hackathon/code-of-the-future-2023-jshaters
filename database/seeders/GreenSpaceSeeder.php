@@ -123,7 +123,6 @@ class GreenSpaceSeeder extends Seeder
 
 
         foreach ($merged_points as $point) {
-            error_log(print_r($point, true));
             DB::table('green_spaces')->insert([
                 'leisure' => $point[2],
                 'lat' => $point[0],

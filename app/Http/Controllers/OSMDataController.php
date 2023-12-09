@@ -30,26 +30,58 @@ class OSMDataController extends Controller
     }
     public function sort(Request $request)
     {
+        $points = GreenSpace::all();
 
         $lat = $request->lat;
         $lon = $request->lon;
 
-        $data = DB::table('green_spaces')
-            ->select('id', 'lat', 'lon', 'leisure')
-            ->selectRaw(
-                '(6371 * acos(cos(radians(?)) * cos(radians(lat)) * cos(radians(lon) - radians(?)) + sin(radians(?)) * sin(radians(lat)))) AS distance',
-                [$lat, $lon, $lat]
-            )
-            ->orderBy('distance', 'ASC')
-            ->take(25)
-            ->get();
+        function distance($lat1, $lon1, $lat2, $lon2, $unit)
+        {
+            if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+                return 0;
+            } else {
+                $theta = $lon1 - $lon2;
+                $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+                $dist = acos($dist);
+                $dist = rad2deg($dist);
+                $miles = $dist * 60 * 1.1515;
+                $unit = strtoupper($unit);
 
-        return $data;
+                if ($unit == "K") {
+                    return ($miles * 1.609344);
+                } else if ($unit == "N") {
+                    return ($miles * 0.8684);
+                } else {
+                    return $miles;
+                }
+            }
+        }
+
+        foreach ($points as $point) {
+            $distance_km = distance($lat, $lon, $point['lat'], $point['lon'], "K");
+            $point['distance'] = $distance_km;
+        }
+        $points = $points->sortBy('distance')->values();
+
+
+
+        return $points;
 
 
         /*   return Inertia::render('GreenSpacesMap', [
               'greenSpaces' => $data,
           ]); */
+    }
+    public function like(Request $request)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return response()->json(['message' => 'Not authenticated!']);
+        }
+        $id = $request->greenSpaceId;
+        $greenSpace = GreenSpace::find([$id]);
+        $user->greenSpaces()->attach($greenSpace);
+        return response()->json(['message' => 'Green space liked successfully']);
     }
 
 }

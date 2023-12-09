@@ -77,21 +77,35 @@ const HomePage = () => {
 
       const [lat, setLat] = useState(0);
       const [lon, setLon] = useState(0);
+      const [greenSpaces, setGreenSpaces] = useState([]);
+
+
       useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
             setLat(position.coords.latitude);
             setLon(position.coords.longitude);
             console.log("Latitude is :", position.coords.latitude);
             console.log("Longitude is :", position.coords.longitude);
-
+            
         });
+        
+    }, []);
+
+    useEffect(() => {
+      // Check if lat and lon are not 0 before sending the POST request
+      if (lat !== 0 && lon !== 0) {
         axios.post('/api/v1/sortGreenSpaces', {
           lat: lat,
           lon: lon
-        }).then((res)=>{
-          console.log(res);
         })
-    }, []);
+        .then((res) => {
+           setGreenSpaces(res.data); 
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      }
+    }, [lat, lon]);
   
   return (
     
@@ -104,19 +118,14 @@ const HomePage = () => {
         <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: {lat}, {lon}</Typography>
         <Paper sx={{ height: 'auto', padding: '1em' , display: 'flex', justifyContent : 'space-evenly', bgcolor : '#181818', color : '#d0d0d0'}}>
           
-        <Grid container justifyContent="center" spacing={0}>
+        <Grid container justifyContent="center" className="gap-x-8 gap-y-12" spacing={0}>
         
-          <HomePageTile/>
-       
-        
-          <HomePageTile/>
-        
-      
-          <HomePageTile/>
-        
-       
-          <HomePageTile/>
-        
+        {greenSpaces.map((space, index) => (
+        <HomePageTile
+          key={index}
+          props={space}
+        />
+      ))}
       </Grid>
 
     </Paper>

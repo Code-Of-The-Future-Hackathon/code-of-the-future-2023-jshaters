@@ -24,8 +24,11 @@ Route::get('/v1/getGreenSpaces', function (Request $request) {
 });
 Route::post('/v1/likeGreenSpace', function (Request $request) {
     $user = $request->user();
-    $greenSpace = GreenSpace::find($request->greenSpaceId);
+    if (!$user) {
+        return response()->json(['message' => 'Not authenticated!']);
+    }
+    $greenSpace = GreenSpace::findOrFail($request->greenSpaceId);
     $user->greenSpaces()->attach($greenSpace);
     return response()->json(['message' => 'Green space liked successfully']);
 });
-Route::post('/v1/sortGreenSpaces', [OSMDataController::class, 'sort']);
+Route::post('/v1/sortGreenSpaces', [OSMDataController::class, 'sort'])->name('likePlace');

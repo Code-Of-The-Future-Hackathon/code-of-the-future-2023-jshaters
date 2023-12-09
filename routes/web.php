@@ -3,6 +3,7 @@ use App\Http\Controllers\UrLocationsController;
 use App\Http\Controllers\GreenSpaceController;
 use App\Http\Controllers\OSMDataController;
 use App\Http\Controllers\ProfileController;
+use App\Models\GreenSpace;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,7 +43,7 @@ Route::get('/osm', [OSMDataController::class, 'index']);
 
 Route::get('/urlocations', [UrLocationsController::class, 'showDashboard']);
 
-
+Route::post('/likeGreenSpace', [OSMDataController::class, 'like']);
 Route::resource('/GreenSpaces', GreenSpaceController::class);
 
 require __DIR__ . '/auth.php';
