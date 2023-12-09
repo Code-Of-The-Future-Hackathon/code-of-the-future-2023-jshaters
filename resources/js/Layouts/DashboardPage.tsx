@@ -374,8 +374,9 @@ const handleDrawerClose = () => {
       sx={{ width: 56, height: 56 }} // Make the avatar larger
     />
   </MenuItem>
+  <Link href="/profile" sx={{textDecoration : 'none'}}>
   <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
-  <MenuItem onClick={handleProfileMenuClose}>Account Settings</MenuItem>
+  </Link>
 </Menu>
 
 
