@@ -12,17 +12,28 @@ interface NavbarHomeProps {
     <Toolbar >
     {isTop ? null : 
    <Box sx={{height : 1}}>
-   <img src="/images/LogoFull.png" alt="Logo" style={{height : '4rem', marginTop : '0.2rem'}}/>
+    <div className='flex flex-row items-center text-xl font-bold'>
+   <img src="/images/LogoShort.png" alt="Logo" style={{height : '4rem', marginTop : '0.2rem'}}/>
+  <div className='-space-y-1 text-center'>
+  <p className='text-[28px] text-green-800 font-bold font-["OpenSans"]'>Greenmore</p>
+  <p className='text-[12px] font-["OpenSans"]'>Your guide to nature</p>
+    </div> </div>
  </Box>
     }
 
     
      
   <Button variant="contained" sx={{ ml: 'auto', bgcolor: isTop? 'success.main' : 'primary.main' }}>
-    <Link href={route('login')}>
+    <Link href={route('register')}>
+      Register
+    </Link>
+  </Button>
+  <Button sx={{color: isTop? 'white': 'black'}}>
+  <Link className="px-4 " href={route('login')}>
       Log in
     </Link>
   </Button>
+  
 
         
     </Toolbar>
