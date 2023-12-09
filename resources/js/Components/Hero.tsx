@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { Box, Typography, Button, useMediaQuery , withTheme} from '@mui/material'
 import { fontWeight } from '@mui/system';
 import React from 'react'
@@ -26,7 +27,9 @@ interface HeroProps {
 {/* Register Button */}
     <Button variant="contained" 
         sx={{ bgcolor : 'primary.main', mt : 30, display: 'block', mx : 'auto', fontSize: theme.typography.h2.fontSize}}>
+          <Link href={route('register')}>
         Get Started
+        </Link>
     </Button>
 
     </Box>

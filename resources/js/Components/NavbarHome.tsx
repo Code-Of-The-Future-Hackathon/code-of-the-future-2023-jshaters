@@ -1,11 +1,11 @@
-import { Link } from '@inertiajs/inertia-react'
+import { Link } from '@inertiajs/react'
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material'
 import React from 'react'
 
 interface NavbarHomeProps {
     isTop: boolean;
   }
-
+  
   const NavbarHome: React.FC<NavbarHomeProps> = ({ isTop }) => {
   return (
     <AppBar elevation={isTop? 0 : 3} position="sticky" sx={{height : "4em" , bgcolor : isTop ? 'transparent' : 'secondary.main', zIndex: 1000,}}>
@@ -19,7 +19,7 @@ interface NavbarHomeProps {
     
      
   <Button variant="contained" sx={{ ml: 'auto', bgcolor: 'primary.main' }}>
-    <Link href='/login'>
+    <Link href={route('login')}>
       Log in
     </Link>
   </Button>
