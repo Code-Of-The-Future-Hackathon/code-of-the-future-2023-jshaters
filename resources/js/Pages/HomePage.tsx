@@ -7,6 +7,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Footer from '@/Components/Footer';
 import HomePageTile from '@/Components/HomePageTile';
 import { Link } from '@inertiajs/react';
+import axios from 'axios';
 
 
 
@@ -66,13 +67,31 @@ const HomePage = () => {
         setIsTop(window.scrollY < 500);
       };
 
+   
+
       window.addEventListener('scroll', scrollListener);
 
       return () => {
         window.removeEventListener('scroll', scrollListener);
       };}, []);
 
-      
+      const [lat, setLat] = useState(0);
+      const [lon, setLon] = useState(0);
+      useEffect(() => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setLat(position.coords.latitude);
+            setLon(position.coords.longitude);
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+
+        });
+        axios.post('/api/v1/sortGreenSpaces', {
+          lat: lat,
+          lon: lon
+        }).then((res)=>{
+          console.log(res);
+        })
+    }, []);
   
   return (
     
@@ -80,10 +99,9 @@ const HomePage = () => {
     <ThemeProvider theme={theme}>
         <NavbarHome isTop={isTop}/>
         <Hero theme={theme}/>
-        <SubHero  theme={theme}/>
-        <Box sx={{bgcolor : '#181818', color : "#d0d0d0", pb:10}}>
-        <Typography align={matches ? "left" : "center"} variant="h2" sx={{py : 5, pl : matches? 20 : 0}}>Nice spots, close to you!</Typography>
-        <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: </Typography>
+        <Box sx={{bgcolor : '#181818', color : "#d0d0d0"}}>
+        <Typography align={matches ? "left" : "center"} variant="h2" sx={{py : 5, pl : matches? 20 : 0}}>Take a breath of fresh air!</Typography>
+        <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: {lat}, {lon}</Typography>
         <Paper sx={{ height: 'auto', padding: '1em' , display: 'flex', justifyContent : 'space-evenly', bgcolor : '#181818', color : '#d0d0d0'}}>
           
         <Grid container justifyContent="center" spacing={0}>

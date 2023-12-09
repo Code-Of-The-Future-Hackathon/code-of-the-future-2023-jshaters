@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OSMDataController;
 use App\Models\GreenSpace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ Route::post('/v1/likeGreenSpace', function (Request $request) {
     $user->greenSpaces()->attach($greenSpace);
     return response()->json(['message' => 'Green space liked successfully']);
 });
+Route::post('/v1/sortGreenSpaces', [OSMDataController::class, 'sort']);
