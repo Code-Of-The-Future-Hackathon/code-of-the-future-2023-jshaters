@@ -43,7 +43,8 @@ Route::get('/osm', [OSMDataController::class, 'index']);
 
 Route::get('/yourlocations', [YourLocationsController::class, 'index']);
 
-Route::post('/likeGreenSpace', [OSMDataController::class, 'like']);
+Route::post('/like', [OSMDataController::class, 'like']);
+Route::post('/unlike', [OSMDataController::class, 'unlike']);
 Route::resource('/GreenSpaces', GreenSpaceController::class);
 Route::get('/userLikedGreenSpaces', [OSMDataController::class, 'getLikedGreenSpaces']);
 

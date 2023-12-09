@@ -23,10 +23,16 @@ class OSMDataController extends Controller
     public function index()
     {
         $data = GreenSpace::all();
+        foreach ($data as $item) {
+            $user = auth()->user();
+            if ($user) {
+                $item['$isLiked'] = $user->greenSpaces()->where('green_space_id', $item)->exists();
+            }
 
-        return Inertia::render('GreenSpacesMap', [
-            'greenSpaces' => $data,
-        ]);
+            return Inertia::render('GreenSpacesMap', [
+                'greenSpaces' => $data,
+            ]);
+        }
     }
     public function sort(Request $request)
     {
@@ -60,6 +66,9 @@ class OSMDataController extends Controller
         foreach ($points as $point) {
             $distance_km = distance($lat, $lon, $point['lat'], $point['lon'], "K");
             $point['distance'] = $distance_km;
+            if (auth()->user()) {
+                $point['isLiked'] = auth()->user()->greenSpaces()->where('green_space_id', $point)->exists();
+            }
         }
         $points = $points->sortBy('distance')->values();
 
@@ -72,24 +81,7 @@ class OSMDataController extends Controller
               'greenSpaces' => $data,
           ]); */
     }
-    public function like(Request $request)
-    {
-        $user = auth()->user();
-        if (!$user) {
-            return response()->json(['message' => 'User not authenticated'], 401);
-        }
-        $id = $request->greenSpaceId;
-        $greenSpace = GreenSpace::find($id);
-        if ($user->greenSpaces()->where('green_space_id', $id)->exists()) {
-            $user->greenSpaces()->detach($id);
-            $greenSpace->likes--;
-        } else {
-            $user->greenSpaces()->attach($id);
-            $greenSpace->likes++;
-        }
-        $greenSpace->save();
-        return response()->json(['message' => 'Green space liked/disliked successfully']);
-    }
+
 
     public function getLikedGreenSpaces(Request $request)
     {
@@ -99,6 +91,34 @@ class OSMDataController extends Controller
         }
         $likedGreenSpaces = $user->greenSpaces;
         return response()->json(['likedGreenSpaces' => $likedGreenSpaces]);
+    }
+    private function like($user, $greenSpace)
+    {
+        if (!$user) {
+            return redirect('/login');
+        }
+        $user->greenSpaces()->attach($greenSpace->id);
+        $greenSpace->likes++;
+        $greenSpace->save();
+    }
+
+    private function unlike($user, $greenSpace)
+    {
+        if (!$user) {
+            return redirect('/login');
+        }
+        $user->greenSpaces()->detach($greenSpace->id);
+        $greenSpace->likes--;
+        $greenSpace->save();
+    }
+    public function isLikedByUser($greenSpaceId)
+    {
+        $user = auth()->user();
+        if (!$user) {
+            return response()->json(['message' => 'User not authenticated'], 401);
+        }
+        $isLiked = $user->greenSpaces()->where('green_space_id', $greenSpaceId)->exists();
+        return response()->json(['isLiked' => $isLiked]);
     }
 
 }
