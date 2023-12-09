@@ -6,6 +6,7 @@ import SubHero from '@/Components/SubHero';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Footer from '@/Components/Footer';
 import HomePageTile from '@/Components/HomePageTile';
+import { Link } from '@inertiajs/react';
 
 
 
@@ -80,7 +81,7 @@ const HomePage = () => {
         <NavbarHome isTop={isTop}/>
         <Hero theme={theme}/>
         <SubHero theme={theme}/>
-        <Box sx={{bgcolor : '#181818', color : "#d0d0d0"}}>
+        <Box sx={{bgcolor : '#181818', color : "#d0d0d0", pb:10}}>
         <Typography align={matches ? "left" : "center"} variant="h2" sx={{py : 5, pl : matches? 20 : 0}}>Nice spots, close to you!</Typography>
         <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: </Typography>
         <Paper sx={{ height: 'auto', padding: '1em' , display: 'flex', justifyContent : 'space-evenly', bgcolor : '#181818', color : '#d0d0d0'}}>
@@ -101,6 +102,12 @@ const HomePage = () => {
       </Grid>
 
     </Paper>
+    <Button variant="contained" 
+        sx={{ bgcolor : 'primary.main', mt : 30, display: 'block', mx : 'auto', fontSize: theme.typography.h2.fontSize}}>
+          <Link href={route('register')}>
+        Explore more
+        </Link>
+    </Button>
     </Box>
         <Footer/>
     </ThemeProvider>

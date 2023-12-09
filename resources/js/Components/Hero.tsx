@@ -10,7 +10,7 @@ interface HeroProps {
   const Hero: React.FC<HeroProps> = ({ theme }) => {
     const matches = useMediaQuery(theme.breakpoints.up('lg'));
   return (
-    <div className="hero" style={{borderBottom : '1px solid black', position: 'relative' ,top: '-4em', marginBottom : '-4em'}}>
+    <div className="hero" style={{borderBottom : '1px solid darkgreen', position: 'relative' ,top: '-4em', marginBottom : '-4em'}}>
     <Box sx={{pt : 20, maxWidth : '80vw', mx : 'auto', height : 'auto', pb : 30}}>
     <Box display="flex"  justifyContent={matches ? "center" : "space-around"} sx={{overflow : 'hidden', flexWrap: 'wrap', flexDirection: matches ? 'row' : 'column'}}>
     <Box sx={{mr : matches? '17.5em' : 0}} >

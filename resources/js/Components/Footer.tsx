@@ -3,6 +3,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa'
 import { BsTwitterX } from "react-icons/bs"
+import { Link } from '@inertiajs/react'
 
 const Footer = () => {
   return (
@@ -19,6 +20,20 @@ const Footer = () => {
     <FaInstagram size={70} />
     </Button>
     </Box>
+    <Box sx={{ pt: 4 }}>
+        <Typography variant="body2" color="text.secondary" align="center">
+          {'Made with ❤️ by JSHaters ( '}
+            
+          <Link color="inherit" href="https://github.com/FloweyAndinov">
+            {'Flowey'}
+          </Link>
+          {' & '}
+          <Link color="inherit" href="https://github.com/Trephyyy">
+            {'Trephy'}
+          </Link>
+          {' )'}
+        </Typography>
+      </Box>
     </Box>
   )
 }
