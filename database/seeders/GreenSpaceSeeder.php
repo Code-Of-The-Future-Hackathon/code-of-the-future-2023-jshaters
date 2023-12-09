@@ -64,7 +64,7 @@ class GreenSpaceSeeder extends Seeder
             for ($i = 0; $i < $n; $i++) {
                 if (!$taken[$i]) {
                     $count = 1;
-                    $point = array($points[$i][0], $points[$i][1]);
+                    $point = array($points[$i][0], $points[$i][1], $points[$i][2]);
                     $taken[$i] = true;
 
                     for ($j = $i + 1; $j < $n; $j++) {
@@ -72,6 +72,8 @@ class GreenSpaceSeeder extends Seeder
                         if (dist2($points[$i], $points[$j]) < $d2) {
                             $point[0] += $points[$j][0];
                             $point[1] += $points[$j][1];
+
+
                             $count++;
                             $taken[$j] = true;
                         }
@@ -89,7 +91,6 @@ class GreenSpaceSeeder extends Seeder
 
         foreach ($result as &$item) {
             if ($item['type'] != 'area') {
-
                 if (isset($item['bounds'])) {
                     if (isset($item['bounds'])) {
                         $item['center'] = [
@@ -97,25 +98,34 @@ class GreenSpaceSeeder extends Seeder
                             'lon' => ($item['bounds']['minlon'] + $item['bounds']['maxlon']) / 2,
                         ];
                     }
+                    if (isset($item['name'])) {
+                        $fuse_points[] = [$item['center']['lat'], $item['center']['lon'], $item['name']];
+                    } else if (isset($item['tags']['leisure'])) {
+                        $fuse_points[] = [$item['center']['lat'], $item['center']['lon'], $item['tags']['leisure']];
+                    } else {
+                        $fuse_points[] = [$item['center']['lat'], $item['center']['lon'], $item['tags']['leisure']];
 
-                    $fuse_points[] = [$item['center']['lat'], $item['center']['lon']];
+                    }
+
 
                 }
                 if (!isset($item['bounds'])) {
-                    $fuse_points[] = [$item['lat'], $item['lon']];
+                    $fuse_points[] = [$item['lat'], $item['lon'], $item['tags']['leisure']];
                 }
             }
 
         }
 
 
-        $merged_points = fuse($fuse_points, 10);
+        $merged_points = fuse($fuse_points, 8);
 
 
 
 
         foreach ($merged_points as $point) {
+            error_log(print_r($point, true));
             DB::table('green_spaces')->insert([
+                'leisure' => $point[2],
                 'lat' => $point[0],
                 'lon' => $point[1],
             ]);
