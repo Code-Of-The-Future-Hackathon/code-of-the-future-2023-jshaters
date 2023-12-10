@@ -168,7 +168,6 @@ const handleDrawerClose = () => {
   }, [lat, lon]);
   
 
-  const [likedGreenSpacesIds, setLikedGreenSpacesIds] = useState<number[]>([]);
 
   function getLocation ()  {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -312,7 +311,13 @@ const handleDrawerClose = () => {
       Welcome, {user ? user.name : null}
     </Typography>
     <Typography variant="h6" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}} color="#d0d0d0">
-      Here are some locations for you:
+      <p className='text-4xl  font-bold'>Green Spaces near you:</p>
+      <div className='flex mt-2 text-gray-400  flex-row items-center space-x-4'>
+      <p className=' '>Your Location: {lat}, {lon}</p>
+      <svg className='ml-4 cursor-pointer' onClick={getLocation} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7s7 3.13 7 7s-3.13 7-7 7z"/></svg>
+      
+      </div>
+     
     </Typography>
   </Grid>
   <Grid container justifyContent="center" className="gap-x-8 gap-y-12" spacing={0} >
