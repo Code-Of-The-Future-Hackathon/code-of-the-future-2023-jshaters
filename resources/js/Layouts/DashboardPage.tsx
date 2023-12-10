@@ -247,8 +247,8 @@ const handleDrawerClose = () => {
       </ListItemIcon>
       <ListItemText primary="Your Locations" />
     </ListItemButton>
-    <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     </Link>
+    <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     <ListItemButton >
       <ListItemIcon>
         <MapIcon style={{ color: '#d0d0d0' }}/>
@@ -256,6 +256,8 @@ const handleDrawerClose = () => {
       <ListItemText primary="Map" />
     </ListItemButton> 
     </Link>
+   
+    
             <Divider sx={{ my: 1 }}  />
             <ListItemButton onClick={handleLogoutOpen}> {/* logout button */}
       <ListItemIcon>
