@@ -23,13 +23,8 @@ class OSMDataController extends Controller
     public function index()
     {
         $data = GreenSpace::all();
-        foreach ($data as $item) {
-            $user = auth()->user();
-            if ($user) {
-                $item['$isLiked'] = $user->greenSpaces()->where('green_space_id', $item)->exists();
-            }
-        }
-    //return Inertia::render('GreenSpacesMap', [
+
+        //return Inertia::render('GreenSpacesMap', [
         return Inertia::render('MapPage', [
             'greenSpaces' => $data,
         ]);
@@ -66,11 +61,11 @@ class OSMDataController extends Controller
         foreach ($points as $point) {
             $distance_km = distance($lat, $lon, $point['lat'], $point['lon'], "K");
             $point['distance'] = $distance_km;
-            if (auth()->user()) {
-                $point['isLiked'] = auth()->user()->greenSpaces()->where('green_space_id', $point)->exists();
-            }
         }
         $points = $points->sortBy('distance')->values();
+
+        $points = $points->take(100);
+
 
 
 

@@ -32,6 +32,7 @@ import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { PageProps } from '@/types';
+import MarkerClusterGroup from 'react-leaflet-cluster';
 
 function Copyright(props: any) {
   return (
@@ -334,6 +335,9 @@ const handleDrawerClose = () => {
     >
     <MapContainer center={[42, 25]} zoom={7} style={{ height: '500px', width: '100%' }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <MarkerClusterGroup
+        chunkedLoading
+      >
       {addressPoints.map((item: { id: any | React.Key | null | undefined; leisure: any, lat: number; lon: number; type: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }) => (
        
        <Marker key={item.id} position={[item.lat, item.lon]}>
@@ -345,6 +349,7 @@ const handleDrawerClose = () => {
           </Popup>
         </Marker>
       ))}
+      </MarkerClusterGroup>
     </MapContainer>
     </Box>
 
