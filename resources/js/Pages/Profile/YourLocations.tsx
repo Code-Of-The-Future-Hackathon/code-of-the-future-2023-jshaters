@@ -222,14 +222,14 @@ const handleDrawerClose = () => {
       <ListItemText primary="Home" />
     </ListItemButton>
     </Link>
-    <Link color="inherit" href="/yourlocations" sx={{textDecoration : 'none'}}>
+    {/* <Link color="inherit" href="/yourlocations" sx={{textDecoration : 'none'}}>
     <ListItemButton>
       <ListItemIcon>
         <LocationOnIcon style={{ color: '#d0d0d0' }}/>
       </ListItemIcon>
       <ListItemText primary="Your Locations" />
     </ListItemButton>
-    </Link>
+    </Link> */}
     <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     <ListItemButton >
       <ListItemIcon>
@@ -288,9 +288,7 @@ const handleDrawerClose = () => {
   </Grid>
     <Grid container spacing={2} justifyContent="center">
   <Grid item xs={7} md={7} lg={6} /* post example */>
-    <Tile title="SavedLocation 1" description="This is a description of the location" image=" "/>
-    <Tile title="SavedLocation 2" description="This is a description of the location" image=" "/>
-    <Tile title="SavedLocation 3" description="This is a description of the location" image=" "/>
+
 
   <Box display="flex" justifyContent="center">
   </Box>

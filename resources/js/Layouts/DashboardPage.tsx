@@ -248,14 +248,14 @@ const handleDrawerClose = () => {
       <ListItemText primary="Home" />
     </ListItemButton>
     </Link>
-    <Link color="inherit" href="/yourlocations" sx={{textDecoration : 'none'}}>
+    {/* <Link color="inherit" href="/yourlocations" sx={{textDecoration : 'none'}}>
     <ListItemButton>
       <ListItemIcon>
         <LocationOnIcon style={{ color: '#d0d0d0' }}/>
       </ListItemIcon>
       <ListItemText primary="Your Locations" />
     </ListItemButton>
-    </Link>
+    </Link> */}
     <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     <ListItemButton >
       <ListItemIcon>
