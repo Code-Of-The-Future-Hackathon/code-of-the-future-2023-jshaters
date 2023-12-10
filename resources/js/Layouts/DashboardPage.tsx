@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import {Link as LinkInertia} from '@inertiajs/react'
+import {Head, Link as LinkInertia} from '@inertiajs/react'
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
@@ -177,7 +177,10 @@ const handleDrawerClose = () => {
   }
   console.log()
   return (
+    
     <ThemeProvider theme={defaultTheme}>
+        <Head title="Dashboard" />
+
       <Box sx={{ display: 'flex' , width : '100vw '}}>
         <CssBaseline />
         <AppBar position="absolute" open={open} >

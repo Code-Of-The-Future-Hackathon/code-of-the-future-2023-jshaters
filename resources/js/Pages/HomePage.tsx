@@ -6,7 +6,7 @@ import SubHero from '@/Components/SubHero';
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import Footer from '@/Components/Footer';
 import HomePageTile from '@/Components/HomePageTile';
-import { Link } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import axios from 'axios';
 import { PageProps } from '@/types';
 import { WindowSharp } from '@mui/icons-material';
@@ -124,6 +124,8 @@ const HomePage = ({ auth }: PageProps) => {
     
 
     <ThemeProvider theme={theme}>
+        <Head title="Home" />
+
         <NavbarHome isTop={isTop} logged={user && user.name ? true : false}/>
         <Hero theme={theme}/>
         <Box sx={{bgcolor : '#181818', color : "#d0d0d0"}}>
