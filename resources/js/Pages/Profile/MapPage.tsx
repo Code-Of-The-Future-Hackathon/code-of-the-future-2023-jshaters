@@ -323,11 +323,9 @@ const handleDrawerClose = () => {
       Here are some locations for you:
     </Typography>
 
-    <Box sx={{ height: "600px" }}>
-    
-
-
-    <MapContainer center={[42, 25]} zoom={7} style={{ height: '400px', width: '100%' }}>
+    <Box // map container
+    >
+    <MapContainer center={[42, 25]} zoom={7} style={{ height: '500px', width: '100%' }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {addressPoints.map((item: { id: any | React.Key | null | undefined; leisure: any, lat: number; lon: number; type: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }) => (
        
@@ -340,11 +338,10 @@ const handleDrawerClose = () => {
           </Popup>
         </Marker>
       ))}
-      
     </MapContainer>
-  
-  
-          </Box>
+    </Box>
+
+
   </Grid>
              
 
