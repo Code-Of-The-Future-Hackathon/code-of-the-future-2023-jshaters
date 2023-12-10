@@ -44,10 +44,10 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })<AppBarProps>(({ theme, open }) => ({
   backgroundColor:
-    theme.palette.mode === 'light'
+    theme.palette.mode === 'dark'
       ? theme.palette.grey[100]
-      : theme.palette.grey[900], // Set AppBar color to transparent
-  color: 'black', // Set AppBar text color to black
+      : theme.palette.grey[800], // Set AppBar color to transparent
+  color: '#d0d0d0', // Set AppBar text color to black
   boxShadow: 'none', // Remove shadow
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
@@ -66,6 +66,8 @@ const AppBar = styled(MuiAppBar, {
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     '& .MuiDrawer-paper': {
+      backgroundColor: theme.palette.grey[800],
+      color : '#d0d0d0',
       position: 'relative',
       whiteSpace: 'nowrap',
       width: drawerWidth,
@@ -139,9 +141,9 @@ const handleDrawerClose = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex' , width : '100vw ' }}>
+      <Box sx={{ display: 'flex' , width : '100vw '}}>
         <CssBaseline />
-        <AppBar position="absolute" open={open}>
+        <AppBar position="absolute" open={open} >
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -195,7 +197,7 @@ const handleDrawerClose = () => {
             }}
           >
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              <ChevronLeftIcon style={{ color: '#d0d0d0' }}/>
             </IconButton>
           </Toolbar>
           <Divider />
@@ -203,7 +205,7 @@ const handleDrawerClose = () => {
           <Link color="inherit" href="/dashboard" sx={{textDecoration : 'none'}}>
           <ListItemButton>  
       <ListItemIcon>
-        <DashboardIcon />
+        <DashboardIcon style={{ color: '#d0d0d0' }}/>
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItemButton>
@@ -211,7 +213,7 @@ const handleDrawerClose = () => {
     <Link color="inherit" href="/yourlocations" sx={{textDecoration : 'none'}}>
     <ListItemButton>
       <ListItemIcon>
-        <LocationOnIcon />
+        <LocationOnIcon style={{ color: '#d0d0d0' }}/>
       </ListItemIcon>
       <ListItemText primary="Your Locations" />
     </ListItemButton>
@@ -219,7 +221,7 @@ const handleDrawerClose = () => {
     </Link>
     <ListItemButton >
       <ListItemIcon>
-        <MapIcon />
+        <MapIcon style={{ color: '#d0d0d0' }}/>
       </ListItemIcon>
       <ListItemText primary="Map" />
     </ListItemButton> 
@@ -227,7 +229,7 @@ const handleDrawerClose = () => {
             <Divider sx={{ my: 1 }}  />
             <ListItemButton onClick={handleLogoutOpen}> {/* logout button */}
       <ListItemIcon>
-        <LogOutIcon />
+        <LogOutIcon style={{ color: '#d0d0d0' }}/>
       </ListItemIcon>
       <ListItemText primary="Log Out" />
     </ListItemButton>
@@ -244,17 +246,18 @@ const handleDrawerClose = () => {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     display: open ? 'block' : 'none',
     zIndex: (theme) => theme.zIndex.drawer - 1,
+    
   }}
 >
   {/* Content of the overlay */}
 </Box>
-        <Box
+        <Box 
           component="main"
           sx={{
             backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
+              theme.palette.mode === 'dark'
                 ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+                : theme.palette.grey[800],
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
@@ -265,10 +268,10 @@ const handleDrawerClose = () => {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
             <Grid item xs={12}>
-    <Typography variant="h3" component="h2" gutterBottom sx={{mb : 2}}>
+    <Typography variant="h3" component="h2" gutterBottom sx={{mb : 2}} color="#d0d0d0">
       Welcome, {user ? user.name : null}
     </Typography>
-    <Typography variant="h6" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}}>
+    <Typography variant="h6" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}} color="#d0d0d0">
       Here are some locations for you:
     </Typography>
   </Grid>
@@ -298,14 +301,14 @@ const handleDrawerClose = () => {
         
       </Grid>
       <Box sx={{ pt: 4 }}>
-        <Typography variant="body2" color="text.secondary" align="center">
+        <Typography variant="body2" color="#d0d0d0" align="center">
           {'Made with ❤️ by JSHaters ( '}
             
-          <Link color="#00f" href="https://www.linkedin.com/in/цветан-андинов-2498742a3/">
+          <Link color="#88f" href="https://www.linkedin.com/in/цветан-андинов-2498742a3/">
             {'Flowey'}
           </Link>
           {' & '}
-          <Link color="#00f" href="https://www.linkedin.com/in/danail-mihov-bb6293248/">
+          <Link color="#88f" href="https://www.linkedin.com/in/danail-mihov-bb6293248/">
             {'Trephy'}
           </Link>
           {' )'}
