@@ -19,10 +19,10 @@ class GreenSpaceSeeder extends Seeder
             'data' => '
             [out:json];
                 (
-                    area["wikipedia"="en:Burgas Province"];
+                    area["wikipedia"="bg:България"];
                     nwr["leisure"="park"](area);
 
-                    area["wikipedia"="en:Burgas Province"];
+                    area["wikipedia"="bg:България"];
                     nwr["leisure"="garden"](area);                
                 );
                 out geom;
