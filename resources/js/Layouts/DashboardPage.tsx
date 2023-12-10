@@ -139,11 +139,11 @@ const handleDrawerClose = () => {
   const handleLogoutClose = () => {
     setLogoutModal(false);
   }
-  const [lat, setLat] = useState(0);
+ 
+
+      const [lat, setLat] = useState(0);
       const [lon, setLon] = useState(0);
       const [greenSpaces, setGreenSpaces] = useState([]);
-
-
   React.useEffect(() => {
     // Check if lat and lon are not 0 before sending the POST request
     if (lat !== 0 && lon !== 0) {
@@ -159,6 +159,8 @@ const handleDrawerClose = () => {
       });
     }
   }, [lat, lon]);
+  
+
   const [likedGreenSpacesIds, setLikedGreenSpacesIds] = useState<number[]>([]);
 
   function getLocation ()  {
@@ -306,9 +308,13 @@ const handleDrawerClose = () => {
   <Grid container spacing={2} justifyContent="center">
   <Grid item xs={12} md={12} lg={8}  /* post example */>
     
-    <Tile title="Location 1" description="This is a description of the location" image=" "/>
-    <Tile title="Location 2" description="This is a description of the location" image=" "/>
-    <Tile title="Location 3" description="This is a description of the location" image=" "/>
+  {greenSpaces.map((space, index) => (
+        <Tile
+          key={index}
+          props={space}
+          myLoc={[lat, lon]}
+        />
+      ))}
     
 
     

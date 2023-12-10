@@ -8,8 +8,8 @@ interface HeroProps {
   }
 
   const Hero: React.FC<HeroProps> = ({ theme }) => {
-  return (
-    <div className='flex justify-center -mt-[4em]  bg-center bg-[url("/images/hero.jpg")] bg-cover w-full items-center h-[700px] flex-col text-white font-["OpenSans"] text-center'>
+  return (  
+    <div className='flex max-h-[100vh] min-h-[100vh] justify-center -mt-[4em]  bg-center bg-[url("/images/hero.jpg")] bg-cover w-full items-center h-[700px] flex-col text-white font-["OpenSans"] text-center'>
 <Box sx={{py : 3 ,fontFamily : 'opensansbold'}}>
 <h1 className='text-4xl text-transparent bg-gradient-to-r from-green-200 to-lime-300 bg-clip-text sm:text-6xl md:text-8xl'>Greenmore</h1>
   </Box>    
