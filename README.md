@@ -8,4 +8,6 @@
 4. Migrate and seed the database with <code>php artisan migrate</code> and <code>php artisan db:seed --class=GreenSpaceSeeder</code>
 5. Start the development server with <code>php artisan serve</code> and <code>npm run dev</code>
 
+### Live demo available at: [64.227.104.197](http://64.227.104.197/)
+
 #### Made by Danail and Flowey
