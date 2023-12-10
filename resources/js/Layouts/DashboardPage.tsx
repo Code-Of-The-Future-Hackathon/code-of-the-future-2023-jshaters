@@ -28,18 +28,6 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MapIcon from '@mui/icons-material/Map';
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const drawerWidth: number = 240;
 
@@ -227,8 +215,8 @@ const handleDrawerClose = () => {
       </ListItemIcon>
       <ListItemText primary="Your Locations" />
     </ListItemButton>
+    <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     </Link>
-    <Link color="inherit" href="/osm" sx={{textDecoration : 'none'}}>
     <ListItemButton >
       <ListItemIcon>
         <MapIcon />
@@ -280,11 +268,28 @@ const handleDrawerClose = () => {
     <Typography variant="h3" component="h2" gutterBottom sx={{mb : 2}}>
       Welcome, {user ? user.name : null}
     </Typography>
-    <Typography variant="h5" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}}>
+    <Typography variant="h6" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}}>
       Here are some locations for you:
     </Typography>
   </Grid>
-             
+  <Grid container spacing={2} justifyContent="center">
+  <Grid item xs={7} md={7} lg={6} /* post example */>
+    <Tile title="Location 1" description="This is a description of the location" image=" "/>
+    <Tile title="Location 2" description="This is a description of the location" image=" "/>
+    <Tile title="Location 3" description="This is a description of the location" image=" "/>
+
+  <Box display="flex" justifyContent="center">
+      <Button variant="contained">
+         Load More Locations
+      </Button>
+  </Box>
+
+
+
+
+ 
+</Grid>
+</Grid> 
     
               
         
@@ -352,11 +357,26 @@ const handleDrawerClose = () => {
 >
 <MenuItem sx={{ justifyContent: 'center'}} // Profile menu item
 > 
-    
-  </MenuItem>
-  <Link href="/profile" sx={{textDecoration : 'none'}}>
+  <Avatar
+    src="/path-to-your-image.jpg" // Replace with the path to your image
+    sx={{ width: 56, height: 56 }}
+    onClick={handleProfileMenuClose} // Make the avatar larger
+  />
+</MenuItem>
+<Link href="/profile" sx={{textDecoration : 'none'}}>
+<Box mb={1}>
+  <Typography variant="body1" color="textPrimary" mx={7.5}>
+    {user ? user.name : null}
+  </Typography>
+</Box>
+<Box mb={1} >
+  <Typography variant="body2" color="textSecondary" mx={5}>
+    {user ? user.email : null}
+  </Typography>
+</Box>
   <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
-  </Link>
+</Link>
+
 </Menu>
 
 

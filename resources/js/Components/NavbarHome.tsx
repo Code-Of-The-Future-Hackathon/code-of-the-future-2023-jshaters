@@ -4,9 +4,10 @@ import React from 'react'
 
 interface NavbarHomeProps {
     isTop: boolean;
+    logged: boolean;
   }
   
-  const NavbarHome: React.FC<NavbarHomeProps> = ({ isTop }) => {
+  const NavbarHome: React.FC<NavbarHomeProps> = ({ isTop , logged}) => {
   return (
     <AppBar elevation={isTop? 0 : 3} position="sticky" sx={{height : "4em" , bgcolor : isTop ? 'transparent' : 'secondary.main', zIndex: 1000,}}>
     <Toolbar >
@@ -21,18 +22,35 @@ interface NavbarHomeProps {
  </Box>
     }
 
-    
-     
-  <Button variant="contained" sx={{ ml: 'auto', bgcolor: isTop? 'success.main' : 'primary.main' }}>
-    <Link href={route('register')}>
-      Register
-    </Link>
-  </Button>
-  <Button sx={{color: isTop? 'white': 'black'}}>
-  <Link className="px-4 " href={route('login')}>
-      Log in
-    </Link>
-  </Button>
+{logged ? (
+          <>
+            <Button variant="contained" sx={{ ml: 'auto', bgcolor: isTop? 'success.main' : 'primary.main' }}>
+              <Link href={route('dashboard')} style={{fontFamily : 'opensansbold'}}>
+                Dashboard
+              </Link>
+            </Button>
+            <Button sx={{color: isTop? 'white': 'black'}}>
+              <Link className="px-4 " href={route('logout')} method="post">
+                Log out
+              </Link>
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button variant="contained" sx={{ ml: 'auto', bgcolor: isTop? 'success.main' : 'primary.main' }}>
+              <Link href={route('register')} style={{fontFamily : 'opensansbold'}}>
+                Register
+              </Link>
+            </Button>
+            <Button sx={{color: isTop? 'white': 'black'}}>
+              <Link className="px-4 " href={route('login')}>
+                Log in
+              </Link>
+            </Button>
+          </>
+        )}
+
+  
   
 
         

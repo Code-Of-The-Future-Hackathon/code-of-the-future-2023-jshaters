@@ -8,10 +8,14 @@ import Footer from '@/Components/Footer';
 import HomePageTile from '@/Components/HomePageTile';
 import { Link } from '@inertiajs/react';
 import axios from 'axios';
+import { PageProps } from '@/types';
 
 
 
-const HomePage = () => {
+
+const HomePage = ({ auth }: PageProps) => {
+
+   const user = auth.user;
     let theme = createTheme({
         palette: {
             primary: {
@@ -119,14 +123,14 @@ const HomePage = () => {
     
 
     <ThemeProvider theme={theme}>
-        <NavbarHome isTop={isTop}/>
+        <NavbarHome isTop={isTop} logged={user && user.name ? true : false}/>
         <Hero theme={theme}/>
         <Box sx={{bgcolor : '#181818', color : "#d0d0d0"}}>
         <Typography align={matches ? "left" : "center"} variant="h2" sx={{py : 5, pl : matches? 20 : 0}}>Take a breath of fresh air!</Typography>
         <Typography align={matches ? "left" : "center"} variant="h3" sx={{py : 1, pl : matches? 22 : 0, color : "grey"}}>Current location: {lat}, {lon}</Typography>
         <Paper sx={{ height: 'auto', padding: '1em' , display: 'flex', justifyContent : 'space-evenly', bgcolor : '#181818', color : '#d0d0d0'}}>
           
-        <Grid container justifyContent="center" className="gap-x-8 gap-y-12" spacing={0}>
+        <Grid container justifyContent="center" className="gap-x-8 gap-y-12" spacing={0} >
         
         {greenSpaces.map((space, index) => (
         <HomePageTile
@@ -139,12 +143,14 @@ const HomePage = () => {
       </Grid>
 
     </Paper>
+    <Box sx={{py : 5}}>
     <Button variant="contained" 
         sx={{ bgcolor : 'primary.main', mt : 30, display: 'block', mx : 'auto', fontSize: theme.typography.h2.fontSize}}>
-          <Link href={route('register')}>
+          <Link href={route('register')} style={{fontFamily : 'opensansbold'}}>
         Explore more
         </Link>
     </Button>
+    </Box>
     </Box>
         <Footer/>
     </ThemeProvider>

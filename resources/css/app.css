@@ -12,6 +12,11 @@
     src: url('/fonts/OpenSans/OpenSans-Bold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'OpenSansCBold';
+    src: url('/fonts/OpenSans/OpenSans-SemiBoldItalic.ttf') format('truetype');
+}
+
 .hero {
     background-image: url('/images/forest.jpg');
     background-position: center;

@@ -228,7 +228,7 @@ const handleDrawerClose = () => {
       <ListItemText primary="Your Locations" />
     </ListItemButton>
     </Link>
-    <Link color="inherit" href="/osm" sx={{textDecoration : 'none'}}>
+    <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     <ListItemButton >
       <ListItemIcon>
         <MapIcon />
@@ -280,21 +280,17 @@ const handleDrawerClose = () => {
     <Typography variant="h3" component="h2" gutterBottom sx={{mb : 2}}>
       Welcome, {user ? user.name : null}
     </Typography>
-    <Typography variant="h5" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}}>
-      Here are some locations for you:
+    <Typography variant="h6" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}}>
+      You showed interest in these locations:
     </Typography>
   </Grid>
-             
     <Grid container spacing={2} justifyContent="center">
   <Grid item xs={7} md={7} lg={6} /* post example */>
-    <Tile title="Location 1, Location" description="This is a description of the location" image=" "/>
-    <Tile title="Location 2, Location" description="This is a description of the location" image=" "/>
-    <Tile title="Location 3, Location" description="This is a description of the location" image=" "/>
+    <Tile title="SavedLocation 1" description="This is a description of the location" image=" "/>
+    <Tile title="SavedLocation 2" description="This is a description of the location" image=" "/>
+    <Tile title="SavedLocation 3" description="This is a description of the location" image=" "/>
 
   <Box display="flex" justifyContent="center">
-      <Button variant="contained">
-         Load More Locations
-      </Button>
   </Box>
 
 
@@ -303,6 +299,7 @@ const handleDrawerClose = () => {
  
 </Grid>
 </Grid>
+             
               
         
       </Grid>
@@ -369,7 +366,10 @@ const handleDrawerClose = () => {
 >
 <MenuItem sx={{ justifyContent: 'center'}} // Profile menu item
 > 
-    
+<Avatar
+      src="/path-to-your-image.jpg" // Replace with the path to your image
+      sx={{ width: 56, height: 56 }} // Make the avatar larger
+    />
   </MenuItem>
   <Link href="/profile" sx={{textDecoration : 'none'}}>
   <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>

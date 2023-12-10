@@ -30,6 +30,8 @@ import MapIcon from '@mui/icons-material/Map';
 import { MapContainer, Popup, Marker, TileLayer, useMap } from 'react-leaflet';
 import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import { PageProps } from '@/types';
 
 function Copyright(props: any) {
   return (
@@ -49,10 +51,6 @@ const drawerWidth: number = 240;
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
   
-}
-
-interface props {
-  user? : any
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -115,9 +113,14 @@ const defaultTheme = createTheme({
   },
 });
 
-export default function MapPage({user} : props) {
+
+
+export default function MapPage({ auth }: PageProps) {
 
   const { props } = usePage();
+  const user = auth.user;
+ 
+  
   const addressPoints: any = props.greenSpaces; 
   console.log(typeof addressPoints);
   console.log(addressPoints.map((item: any)=>{
@@ -267,7 +270,7 @@ const handleDrawerClose = () => {
       <ListItemText primary="Your Locations" />
     </ListItemButton>
     </Link>
-    <Link color="inherit" href="/osm" sx={{textDecoration : 'none'}}>
+    <Link color="inherit" href="/maps" sx={{textDecoration : 'none'}}>
     <ListItemButton >
       <ListItemIcon>
         <MapIcon />
@@ -411,7 +414,10 @@ const handleDrawerClose = () => {
 >
 <MenuItem sx={{ justifyContent: 'center'}} // Profile menu item
 > 
-    
+<Avatar
+      src="/path-to-your-image.jpg" // Replace with the path to your image
+      sx={{ width: 56, height: 56 }} // Make the avatar larger
+    />
   </MenuItem>
   <Link href="/profile" sx={{textDecoration : 'none'}}>
   <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
