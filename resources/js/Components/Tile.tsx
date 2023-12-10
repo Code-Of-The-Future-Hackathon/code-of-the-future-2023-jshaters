@@ -14,20 +14,37 @@ const Tile = ({ props, myLoc} : Props) => {
        <div className='mt-5 space-x-4'>
        <button  
         className='p-2 bg-green-700 rounded-md'
-        onClick={() => window.location.href=`https://www.google.com/maps/dir/${myLoc[0]},${myLoc[1]}/${props.lat},${props.lon}`}
-      >
+        onClick={() => window.location.href=`https://www.google.com/maps/dir/${myLoc[0]},${myLoc[1]}/${props.lat},${props.lon}`}>
+        </button>
+
+
+    
+    <Paper
+      sx={{
+        p: 3,
+        mb : 2,
+        mx : 6,
+        display: 'flex',
+        flexDirection: 'column',
+        height: 'auto',
+        cursor: 'pointer', // Change cursor to pointer when hovering over the Paper
+        bgcolor : '#181818',
+        color : "#d0d0d0"
+      }}
+        // Open the modal when the Paper is clicked
+      />
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
             <path d="M19 10c0 3.976-7 11-7 11s-7-7.024-7-11s3.134-7 7-7s7 3.024 7 7z"/>
             <circle cx="12" cy="10" r="3"/>
           </g>
+          
   </svg>
-</button>
       
+       </div>
        </div>
        
    
-</div>
     
 
   )
