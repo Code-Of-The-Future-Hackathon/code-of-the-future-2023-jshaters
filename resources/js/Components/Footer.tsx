@@ -24,13 +24,13 @@ const Footer = () => {
         <Typography variant="body2" color="text.secondary" align="center">
           {'Made with ❤️ by JSHaters ( '}
             
-          <Link style={{color : 'blue'}} href="https://github.com/FloweyAndinov">
+            <a style={{color : 'blue'}} href={encodeURI("https://www.linkedin.com/in/цветан-андинов-2498742a3/")} target="_blank" rel="noopener noreferrer">
             {'Flowey'}
-          </Link>
+          </a>
           {' & '}
-          <Link style={{color : 'blue'}} href="https://github.com/Trephyyy">
+          <a style={{color : 'blue'}} href={encodeURI("https://www.linkedin.com/in/danail-mihov-bb6293248/")} target="_blank" rel="noopener noreferrer">
             {'Trephy'}
-          </Link>
+          </a>
           {' )'}
         </Typography>
       </Box>
