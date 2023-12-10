@@ -273,11 +273,14 @@ const handleDrawerClose = () => {
     </Typography>
   </Grid>
   <Grid container spacing={2} justifyContent="center">
-  <Grid item xs={7} md={7} lg={6} /* post example */>
+  <Grid item xs={12} md={12} lg={8}  /* post example */>
+    
     <Tile title="Location 1" description="This is a description of the location" image=" "/>
     <Tile title="Location 2" description="This is a description of the location" image=" "/>
     <Tile title="Location 3" description="This is a description of the location" image=" "/>
+    
 
+    
   <Box display="flex" justifyContent="center">
       <Button variant="contained">
          Load More Locations
@@ -298,11 +301,11 @@ const handleDrawerClose = () => {
         <Typography variant="body2" color="text.secondary" align="center">
           {'Made with ❤️ by JSHaters ( '}
             
-          <Link color="inherit" href="https://github.com/FloweyAndinov">
+          <Link color="#00f" href="https://www.linkedin.com/in/цветан-андинов-2498742a3/">
             {'Flowey'}
           </Link>
           {' & '}
-          <Link color="inherit" href="https://github.com/Trephyyy">
+          <Link color="#00f" href="https://www.linkedin.com/in/danail-mihov-bb6293248/">
             {'Trephy'}
           </Link>
           {' )'}

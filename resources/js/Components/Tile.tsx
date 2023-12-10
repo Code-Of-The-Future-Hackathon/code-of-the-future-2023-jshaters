@@ -11,11 +11,14 @@ const Tile = ({title , description , image} : Props) => {
     <Paper
       sx={{
         p: 3,
-        mb : 10,
+        mb : 2,
+        mx : 6,
         display: 'flex',
         flexDirection: 'column',
         height: 'auto',
         cursor: 'pointer', // Change cursor to pointer when hovering over the Paper
+        bgcolor : '#181818',
+        color : "#d0d0d0"
       }}
         // Open the modal when the Paper is clicked
       >

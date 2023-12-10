@@ -355,11 +355,11 @@ const handleDrawerClose = () => {
         <Typography variant="body2" color="text.secondary" align="center">
           {'Made with ❤️ by JSHaters ( '}
             
-          <Link color="inherit" href="https://github.com/FloweyAndinov">
+          <Link color="#00f" href="https://www.linkedin.com/in/цветан-андинов-2498742a3/">
             {'Flowey'}
           </Link>
           {' & '}
-          <Link color="inherit" href="https://github.com/Trephyyy">
+          <Link color="#00f" href="https://www.linkedin.com/in/danail-mihov-bb6293248/">
             {'Trephy'}
           </Link>
           {' )'}
