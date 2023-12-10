@@ -318,11 +318,11 @@ const handleDrawerClose = () => {
     
 
     
-  <Box display="flex" justifyContent="center">
+  {/* <Box display="flex" justifyContent="center">
       <Button variant="contained">
          Load More Locations
       </Button>
-  </Box>
+  </Box> */}
 
 
 
