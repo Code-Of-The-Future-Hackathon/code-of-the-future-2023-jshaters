@@ -27,6 +27,7 @@ import Tile from '../Components/Tile';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MapIcon from '@mui/icons-material/Map';
+import axios from 'axios';
 
 
 const drawerWidth: number = 240;
@@ -136,7 +137,34 @@ const handleDrawerClose = () => {
   const handleLogoutClose = () => {
     setLogoutModal(false);
   }
+  const [lat, setLat] = useState(0);
+      const [lon, setLon] = useState(0);
+      const [greenSpaces, setGreenSpaces] = useState([]);
 
+
+  React.useEffect(() => {
+    // Check if lat and lon are not 0 before sending the POST request
+    if (lat !== 0 && lon !== 0) {
+      axios.post('/api/v1/sortGreenSpaces', {
+        lat: lat,
+        lon: lon
+      })
+      .then((res) => {
+         setGreenSpaces(res.data); 
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    }
+  }, [lat, lon]);
+  const [likedGreenSpacesIds, setLikedGreenSpacesIds] = useState<number[]>([]);
+
+  function getLocation ()  {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLat(position.coords.latitude);
+      setLon(position.coords.longitude);
+});
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' , width : '100vw ' }}>
@@ -274,9 +302,13 @@ const handleDrawerClose = () => {
   </Grid>
   <Grid container spacing={2} justifyContent="center">
   <Grid item xs={7} md={7} lg={6} /* post example */>
-    <Tile title="Location 1" description="This is a description of the location" image=" "/>
-    <Tile title="Location 2" description="This is a description of the location" image=" "/>
-    <Tile title="Location 3" description="This is a description of the location" image=" "/>
+  {greenSpaces.map((space, index) => (
+        <Tile
+          key={index}
+          props={space}
+          myLoc={[lat, lon]}
+        />
+      ))}
 
   <Box display="flex" justifyContent="center">
       <Button variant="contained">
@@ -358,7 +390,6 @@ const handleDrawerClose = () => {
 <MenuItem sx={{ justifyContent: 'center'}} // Profile menu item
 > 
   <Avatar
-    src="/path-to-your-image.jpg" // Replace with the path to your image
     sx={{ width: 56, height: 56 }}
     onClick={handleProfileMenuClose} // Make the avatar larger
   />
