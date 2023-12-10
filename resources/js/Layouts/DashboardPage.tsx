@@ -144,6 +144,13 @@ const handleDrawerClose = () => {
       const [lat, setLat] = useState(0);
       const [lon, setLon] = useState(0);
       const [greenSpaces, setGreenSpaces] = useState([]);
+
+      React.useEffect(()=>{
+        navigator.geolocation.getCurrentPosition(function(position) {
+          setLat(position.coords.latitude);
+          setLon(position.coords.longitude);
+        })})
+
   React.useEffect(() => {
     // Check if lat and lon are not 0 before sending the POST request
     if (lat !== 0 && lon !== 0) {
@@ -169,6 +176,7 @@ const handleDrawerClose = () => {
       setLon(position.coords.longitude);
 });
   }
+  console.log()
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' , width : '100vw '}}>
@@ -307,8 +315,7 @@ const handleDrawerClose = () => {
       Here are some locations for you:
     </Typography>
   </Grid>
-  <Grid container spacing={2} justifyContent="center">
-  <Grid item xs={12} md={12} lg={8}  /* post example */>
+  <Grid container justifyContent="center" className="gap-x-8 gap-y-12" spacing={0} >
     
   {greenSpaces.map((space, index) => (
         <Tile
@@ -318,7 +325,7 @@ const handleDrawerClose = () => {
         />
       ))}
     
-
+</Grid>
     
   {/* <Box display="flex" justifyContent="center">
       <Button variant="contained">
@@ -330,8 +337,6 @@ const handleDrawerClose = () => {
 
 
  
-</Grid>
-</Grid> 
     
               
         

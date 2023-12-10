@@ -12,19 +12,7 @@ interface HomePageTileProps {
 
 const HomePageTile = ({props, likedPosts, myLoc}: HomePageTileProps) => {
 
-  console.log(likedPosts);
-  const handleLike = () => {
-    router.post('/like', {
-          'greenSpaceId': props.id,
-        });
-       }
-       const handleDislike = () => {
-        router.post('/dislike', {
-              'greenSpaceId': props.id,
-            });
 
-};
-const idExists = likedPosts.includes(props.id);
 
   return (
     <div className='rounded-md'>
