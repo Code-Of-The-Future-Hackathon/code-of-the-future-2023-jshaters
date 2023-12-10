@@ -9,6 +9,7 @@ import HomePageTile from '@/Components/HomePageTile';
 import { Link } from '@inertiajs/react';
 import axios from 'axios';
 import { PageProps } from '@/types';
+import { WindowSharp } from '@mui/icons-material';
 
 
 
@@ -146,14 +147,11 @@ const HomePage = ({ auth }: PageProps) => {
       </Grid>
 
     </Paper>
-    <Box sx={{py : 5}}>
-    <Button variant="contained" 
-        sx={{ bgcolor : 'primary.main', mt : 30, display: 'block', mx : 'auto', fontSize: theme.typography.h2.fontSize}}>
-          <Link href={route('register')} style={{fontFamily : 'opensansbold'}}>
-        Explore more
-        </Link>
-    </Button>
-    </Box>
+    <div className='w-full flex'>
+      <Link className='mx-auto' href="maps">
+      <button  className='text-center mx-auto py-4 px-8 bg-red-800 my-12'>View our map</button>
+      </Link>
+    </div>
     </Box>
         <Footer/>
     </ThemeProvider>

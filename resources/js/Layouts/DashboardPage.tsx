@@ -308,7 +308,7 @@ const handleDrawerClose = () => {
             <Grid container spacing={3}>
             <Grid item xs={12}>
     <Typography variant="h3" component="h2" gutterBottom sx={{mb : 2}} color="#d0d0d0">
-      Welcome, {user ? user.name : null}
+      Welcome {user ? user.name + ',' : null}
     </Typography>
     <Typography variant="h6" component="h2" gutterBottom sx={{ pl : 1 ,mb : 10}} color="#d0d0d0">
       <p className='text-4xl  font-bold'>Green Spaces near you:</p>
