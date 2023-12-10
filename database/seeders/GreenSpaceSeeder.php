@@ -68,7 +68,6 @@ class GreenSpaceSeeder extends Seeder
                     $taken[$i] = true;
 
                     for ($j = $i + 1; $j < $n; $j++) {
-                        error_log(dist2($points[$i], $points[$j]));
                         if (dist2($points[$i], $points[$j]) < $d2) {
                             $point[0] += $points[$j][0];
                             $point[1] += $points[$j][1];
